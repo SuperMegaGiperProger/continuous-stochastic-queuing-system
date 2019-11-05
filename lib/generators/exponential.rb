@@ -10,7 +10,7 @@ module Generators
     end
 
     def next
-      - Math.log(@uniform.next) / @lambda
+      - Math.log(rand) / @lambda
     end
   end
 end

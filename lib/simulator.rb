@@ -20,8 +20,8 @@ class Simulator
     characteristics = {
       average_count_in_queue: Characteristics::AverageCountInQueue.new,
       average_count_in_system: Characteristics::AverageCountInSystem.new,
-      #average_time_in_queue: Characteristics::AverageTimeInQueue.new,
-      #average_time_in_system: Characteristics::AverageTimeInSystem.new,
+      average_time_in_queue: Characteristics::AverageTimeInQueue.new,
+      average_time_in_system: Characteristics::AverageTimeInSystem.new,
     }
 
     event_generator = EventGenerator.new({
@@ -32,12 +32,6 @@ class Simulator
 
     queue   = Components::Queue.new
     channel = Components::Channel.new
-    
-    counter = {
-      generated: 0,
-      processed: 0,
-      warmed: 0,
-    }
 
     TACTS_COUNT.times do |i|
       deprecated_events = []
@@ -45,8 +39,6 @@ class Simulator
       deprecated_events.push :warmed if channel.warm? || queue.empty?
 
       event = event_generator.next deprecated_events
-
-      counter[event[:type]] += 1
 
       characteristics.each do |_key, characteristic|
         characteristic.update queue: queue, channel: channel, spend_time: event[:time]
@@ -68,8 +60,6 @@ class Simulator
         queue.dec
       end
     end
-
-    puts counter
 
     characteristics.transform_values(&:value)
   end
