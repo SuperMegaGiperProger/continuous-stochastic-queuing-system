@@ -20,8 +20,8 @@ class Simulator
     characteristics = {
       average_count_in_queue: Characteristics::AverageCountInQueue.new,
       average_count_in_system: Characteristics::AverageCountInSystem.new,
-      average_time_in_queue: Characteristics::AverageTimeInQueue.new,
-      average_time_in_system: Characteristics::AverageTimeInSystem.new,
+      average_time_in_queue: Characteristics::AverageTimeInQueue.new(TACTS_COUNT),
+      average_time_in_system: Characteristics::AverageTimeInSystem.new(TACTS_COUNT),
     }
 
     event_generator = EventGenerator.new({
