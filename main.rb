@@ -8,13 +8,13 @@ params = {
 }
 
 unless ARGV[0] == '-d'
-  puts 'Enter λ: '
+  print 'Enter λ  : '
   params[:lambda] = gets.to_f
 
-  puts 'Enter μ: '
+  print 'Enter μ  : '
   params[:mu] = gets.to_f
 
-  puts 'Enter Тр: '
+  print 'Enter Тр : '
   params[:t_r] = gets.to_f
 end
 
