@@ -8,7 +8,7 @@ require_relative './components/channel'
 require_relative './components/queue'
 
 class Simulator
-  TACTS_COUNT = 100_000
+  TACTS_COUNT = 1_000_000
 
   def initialize(lambda:, mu:, t_r:)
     @lambda = lambda
